@@ -28,16 +28,15 @@ def create_nodes(context, *args, **kwargs):
         )
         obstacle_extractor = Node(
             package="lidar_processing",
-            executable="obstacle_extractor_real_node",
+            executable="obstacle_extractor_real",
             name="obstacle_extractor",
             output="screen",
         )
         field_planner = Node(
             package="potential_fields",
-            executable="field_planner_real_node",
+            executable="field_planner_real",
             name="field_planner",
             output="screen",
-            parameters=[{"d0": 5.0, "epsilon1": 1.0, "epsilon2": 1.0, "eta": 2.0}],
         )
     else:  # SIM
         state_node = Node(
@@ -49,16 +48,15 @@ def create_nodes(context, *args, **kwargs):
         )
         obstacle_extractor = Node(
             package="lidar_processing",
-            executable="obstacle_extractor_node",
+            executable="obstacle_extractor_sim",
             name="obstacle_extractor",
             output="screen",
         )
         field_planner = Node(
             package="potential_fields",
-            executable="field_planner_node",
+            executable="field_planner_sim",
             name="field_planner",
             output="screen",
-            parameters=[{"d0": 5.0, "epsilon1": 1.0, "epsilon2": 1.0, "eta": 2.0}],
         )
 
     return [state_node, obstacle_extractor, field_planner, velocity_controller]
